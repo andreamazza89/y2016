@@ -1,8 +1,8 @@
-defmodule Y2016.Mixfile do
+defmodule ElixirBubblesort.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :y2016,
+    [app: :elixir_bubblesort,
      version: "0.1.0",
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
@@ -27,6 +27,6 @@ defmodule Y2016.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [{:mix_test_watch, "~> 0.2", only: :dev}]
   end
 end
