@@ -5,6 +5,10 @@ defmodule SixTest do
     assert Six.most_frequent_element(["a", "d", "d"]) === "d"
   end
 
+  test "gets the least frequent element of a list" do
+    assert Six.least_frequent_element(["a", "d", "d"]) === "a"
+  end
+
   test "frequencies produces a frequency map of inputs" do
     assert Six.frequencies([1, 2, 2, 3, 4, 3, 1, 1]) === [{1, 3}, {2, 2}, {3, 2}, {4, 1}]
   end
@@ -19,11 +23,19 @@ defmodule SixTest do
     assert Six.solve_day_6_part_one(["aaaaaaab", "aaaaaaab", "aaaaaaaa"]) === "aaaaaaab"
   end
 
-  test "gets the solution" do
+  test "gets the solution for part one" do
     File.read!("inputs/six")
       |> String.trim
       |> String.split("\n")
       |> Six.solve_day_6_part_one
+      |> IO.puts
+  end
+
+  test "gets the solution for part two" do
+    File.read!("inputs/six")
+      |> String.trim
+      |> String.split("\n")
+      |> Six.solve_day_6_part_two
       |> IO.puts
   end
 end

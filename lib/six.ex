@@ -12,6 +12,12 @@ defmodule Six do
       |> elem(0)
   end
 
+  def least_frequent_element(elements) do
+    frequencies(elements) 
+      |> Enum.min_by(fn({_character, frequency}) -> frequency end) 
+      |> elem(0)
+  end
+
   def make_list_of_nth_characters(noisy_messages, character_index) do
     Enum.map(noisy_messages, fn(message) -> String.at(message, character_index) end)
   end
@@ -20,6 +26,13 @@ defmodule Six do
     message_length = String.length(Enum.at(noisy_messages, 0))
     Enum.map((0..(message_length - 1)), fn(x) -> make_list_of_nth_characters(noisy_messages, x) end)
       |> Enum.map(&Six.most_frequent_element/1)
+      |> List.to_string
+  end
+
+  def solve_day_6_part_two(noisy_messages) do
+    message_length = String.length(Enum.at(noisy_messages, 0))
+    Enum.map((0..(message_length - 1)), fn(x) -> make_list_of_nth_characters(noisy_messages, x) end)
+      |> Enum.map(&Six.least_frequent_element/1)
       |> List.to_string
   end
 
